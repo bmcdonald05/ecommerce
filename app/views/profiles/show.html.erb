@@ -1,5 +1,8 @@
-<h1><%= @user.username %> Profile</h1>
-<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<h1><%= @user.username %>'s Profile</h1>
+
+
+
+<%= current_user.distance_to(@user) %>
 
 
 

@@ -20,9 +20,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <%= f.email_field :email, autofocus: true %><i>Email</i>
+  </div><br />
+
+  <div>
+    <%= f.text_field :zip_code, placeholder: "Your Zip Code"  %>
+  </div><br />
 
   <div calss="field">
     <%= f.label "Profile Picture" %>
