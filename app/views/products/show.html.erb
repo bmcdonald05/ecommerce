@@ -2,6 +2,8 @@
 
 <%= @product.name %>
 
+<%= button_to "Add to Cart", line_items_path(product_id: @product), class: "btn btn-success" %>
+
 <div id="map-canvas">
 </div>
 <%= javascript_tag do %>
