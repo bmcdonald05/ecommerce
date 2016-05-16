@@ -12,6 +12,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'geocoder'
 gem 'figaro'
+gem 'stripe'
 
 group :development, :test do
   gem 'byebug'

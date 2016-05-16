@@ -1,6 +1,25 @@
 class CartsController < ApplicationController
 	before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
+	def order_complete
+		@cart = Cart.find(params[:cart_id])
+		@amount = (@cart.subtotal.to_f.round(2) * 100).to_i
+		customer = Stripe::Customer.create(
+			:email => current_user.email,
+			:card => params[:stripeToken]
+		)
+		charge = Stripe::Charge.create(
+			:customer => customer.id,
+			:amount => @amount,
+			:description => 'Rails Stripe Customer',
+			:currency => 'usd'
+		)
+		@cart.destroy
+	rescue Stripe::CardError => e 
+		flash[:error] = e.message
+		redirect_to charges_path
+	end
+
 	def show
 		@cart = Cart.find(params[:id])
 		unless current_user.id == @cart.user_id

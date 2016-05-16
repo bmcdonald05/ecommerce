@@ -1,4 +1,6 @@
+<h1>Products</h1>
+
 <% @products.each do |product| %>
 	<%= product.name %>
-	<%= product.distance_to(current_user) %>
+	<p><%= product.distance_to(current_user) %> miles from you.</p>
 <% end %>
