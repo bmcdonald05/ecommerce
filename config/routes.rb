@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :line_items, only: [:destroy, :create]
   resources :carts
   post "order_complete" => "carts#order_complete"
+  get 'categorical' => 'products#items_by_category'
 
 end
